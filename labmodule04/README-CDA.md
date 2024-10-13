@@ -10,13 +10,16 @@ NOTE: Include two full paragraphs describing your implementation approach by ans
 
 What does your implementation do? 
 
+Using Python, the program simulates sensor and actuator activities for a limited IoT device environment. By creating new Python modules from BaseSensorSimTask and BaseActuatorSimTask, it replicates real-world sensors such  as pressure, humidity, and temperature sensors and actuators like humidifiers, HVAC systems, and LED displays. A complete simulation may be performed without the use of actual hardware  to the implementation's integration with the SenseHAT emulator, which reads sensor data and controls actuators. This method allows the application to collect, process, and react to sensor data or commands as if it were dealing with real hardware, simulating the behavior of IoT devices in real-world circumstances.
+
 How does your implementation work?
 
+The way the implementation functions is by adding additional base simulation tasks for actuators and sensors. For sensors, it uses the SenseHAT emulator to read data by simulating pressure, temperature, and humidity readings from sensors. To control the flow of sensor data within the application, the SensorAdapterManager processes the data after that. Similarly, for actuators, the LED matrix of the SenseHAT allows the BaseActuatorSimTask to be extended to control appliances like the humidifier and HVAC system. These simulated actuators are activated and deactivated by the ActuatorAdapterManager in response to system commands and sensor readings. In order to create a working IoT simulation environment, each task processes its corresponding data, uses logic to control devices, and reports the actions taken.
 ### Code Repository and Branch
 
 NOTE: Be sure to include the branch (e.g. https://github.com/programming-the-iot/python-components/tree/alpha001).
 
-URL: 
+URL: https://github.com/lohitha0798/Connected_Device_CDA.git
 
 ### UML Design Diagram(s)
 
@@ -31,9 +34,11 @@ NOTE: TA's will execute your unit tests. You only need to list each test case be
 (e.g. ConfigUtilTest, DataUtilTest, etc). Be sure to include all previous tests, too,
 since you need to ensure you haven't introduced regressions.
 
-- 
-- 
-- 
+- BaseActuatorSimTaskTest
+- SensorAdapterManagerTest
+- ActuatorAdapterManagerTest
+-BaseSensorSimTaskTest
+-ConfigUtilTest
 
 ### Integration Tests Executed
 
@@ -42,8 +47,13 @@ some exceptions (such as your cloud connectivity tests). In such cases, they'll 
 your code to ensure it's correct. As for the tests you execute, you only need to list each
 test case below (e.g. SensorSimAdapterManagerTest, DeviceDataManagerTest, etc.)
 
-- 
-- 
-- 
+- ActuatorEmulatorManagerTest
+-SensorEmulatorManagerTest
+- HumidifierEmulatorTaskTest
+-HvacEmulatorTaskTest
+-LedDisplayEmulatorTaskTest
+- HumidityEmulatorTaskTest
+-PressureEmulatorTaskTest
+-TemperatureEmulatorTaskTest
 
 EOF.
